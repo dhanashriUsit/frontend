@@ -1,0 +1,60 @@
+<p>stdlogin works!</p>
+<H1>
+    Hello my Angular is working...jooooo
+</H1>
+<br><br>
+<div>
+<form action="">
+    <div class="form-group">
+      <label for="sname">Name:</label>
+      <input type="text" class="form-control" id="sname">
+    </div>
+    <div class="form-group">
+      <label for="sAdd">Address:</label>
+      <input type="text" class="form-control" id="sAdd">
+    </div>
+
+
+      <div class="form-group">
+        <label for="sNo">Mobile:</label>
+        <input type="text" class="form-control" id="sNo">
+      </div>
+
+      <div class="form-group">
+        <label for="school">School:</label>
+        <input type="text" class="form-control" id="school">
+      </div>
+   
+    <button type="submit" class="btn btn-default" (click)="add()">Submit</button>
+  </form>
+<br><br><br><br>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>School</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.sid }}</td>
+        <td>{{ student.sName }}</td>
+        <td>{{ student.sAdd }}</td>
+        <td>{{ student.sNo }}</td>
+        <td>{{ student.school }}</td>
+        <td>
+          <!-- <button (click)="deleteStudent(student.sid)">Delete</button> -->
+          <button class="btn"  (click)="deleteStudent(student.sid)"><i class="fa fa-trash"></i></button>
+
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
