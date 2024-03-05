@@ -27,7 +27,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     HttpClientModule   
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [],
+  providers: [{provide: LocationStrategy,
+    useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
