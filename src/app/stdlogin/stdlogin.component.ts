@@ -26,9 +26,33 @@ export class StdloginComponent implements OnInit {
   }
 
   add(){
+   // this.stdService.addStudent()
    console.log('added new student')
   }
   
-  
+  selectedCountryAdvanced: any;
+  filteredCountries: any[] | undefined;
+
+  countries: any[] = [
+    { name: 'USA', code: 'US' },
+    { name: 'Germany', code: 'DE' },
+    { name: 'Italy', code: 'IT' },
+    { name: 'France', code: 'FR' },
+    { name: 'Spain', code: 'ES' }
+  ];
+
+  filterCountry(event: { query: string; }) {
+    let filtered: any[] = [];
+    let query = event.query.toLowerCase();
+
+    for (let i = 0; i < this.countries.length; i++) {
+      let country = this.countries[i];
+      if (country.name.toLowerCase().indexOf(query) == 0) {
+        filtered.push(country);
+      }
+    }
+
+    this.filteredCountries = filtered;
+  }
 
 }
