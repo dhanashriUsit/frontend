@@ -1,10 +1,10 @@
 <p>stdlogin works!</p>
 <H1>
     Hello my Angular is working..000000000 </H1>
-<!--
+
 <br><br>
 <div>
-<form action="">
+<!-- <form action="">
     <div class="form-group">
       <label for="sname">Name:</label>
       <input type="text" class="form-control" id="sname">
@@ -26,7 +26,29 @@
       </div>
    
     <button type="submit" class="btn btn-default" (click)="add()">Submit</button>
-  </form>
+  </form> -->
+
+<form (ngSubmit)="add()">
+  <div class="form-group">
+    <label for="sname">Name:</label>
+    <input type="text" class="form-control" id="sname" [(ngModel)]="newStudent.sName" name="sname">
+  </div>
+  <div class="form-group">
+    <label for="sAdd">Address:</label>
+    <input type="text" class="form-control" id="sAdd" [(ngModel)]="newStudent.sAdd" name="sAdd">
+  </div>
+  <div class="form-group">
+    <label for="sNo">Mobile:</label>
+    <input type="text" class="form-control" id="sNo" [(ngModel)]="newStudent.sNo" name="sNo">
+  </div>
+  <div class="form-group">
+    <label for="school">School:</label>
+    <input type="text" class="form-control" id="school" [(ngModel)]="newStudent.school" name="school">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+
 <br><br><br><br>
 <div>
   <table>
@@ -60,7 +82,8 @@
 </div>
 
 
-<h5>Dropdown and Templating</h5> -->
+<h5>Dropdown and Templating</h5>
+
 
 <!-- <p-autoComplete [(ngModel)]="selectedCountryAdvanced" [suggestions]="filteredCountries"
   (completeMethod)="filterCountry($event)" field="name" [dropdown]="true">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { StdService, Student } from '../std.service';
+import { StdService, Student } from '../std.service';
 
 @Component({
   selector: 'app-stdlogin',
@@ -7,27 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stdlogin.component.css']
 })
 export class StdloginComponent implements OnInit {
-  //students: Student[]=[];
+  students: Student[]=[];
+  newStudent: Student = { sid: 0, sName: '', sAdd: '', sNo: '', school: '' };
 
-  constructor() { }
+  constructor(private stdService:StdService) { }
 
   ngOnInit(): void {
-    //this.loadStudents();
+    this.loadStudents();
   }
-  // loadStudents(): void {
-  //   this.stdService.getAllStudents().subscribe((students: any) => {
-  //     this.students = students;
-  //   });
-  // }
+  loadStudents(): void {
+    this.stdService.getAllStudents().subscribe((students: any) => {
+      this.students = students;
+    });
+  }
 
   deleteStudent(sid:number){
 
     console.log("deleted from H2....")
   }
 
-  add(){
-   // this.stdService.addStudent()
-   console.log('added new student')
+  add() {
+    this.stdService.addStudent(this.newStudent)
+      .subscribe((response) => {
+        console.log('Student added successfully:', response);
+        // Clear the form after adding the student
+        this.newStudent = { sid: 0, sName: '', sAdd: '', sNo: '', school: '' };
+      }, (error) => {
+        console.error('Error adding student:', error);
+      });
   }
   
 
