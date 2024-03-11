@@ -14,7 +14,8 @@ export class StdService {
     return this.http.post<Student>(`${this.baseUrl}/add`, student);
   }
 
-  deleteStudent(id: number): Observable<void> {
+  deleteStudent(id: any): Observable<void> {
+    console.log('service clicked for ',id)
     return this.http.delete<void>(`${this.baseUrl}/delete/${id}`);
   }
 

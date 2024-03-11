@@ -9,7 +9,6 @@ import { StdService, Student } from '../std.service';
 export class StdloginComponent implements OnInit {
   students: Student[]=[];
   newStudent: Student = { sid: 0, sName: '', sAdd: '', sNo: '', school: '' };
-
   constructor(private stdService:StdService) { }
 
   ngOnInit(): void {
@@ -21,10 +20,12 @@ export class StdloginComponent implements OnInit {
     });
   }
 
-  deleteStudent(sid:number){
-
-    console.log("deleted from H2....")
+  deleteStudent(id: any): void {
+    this.stdService.deleteStudent(id).subscribe(() => {
+      this.loadStudents();
+    });
   }
+
 
   add() {
     this.stdService.addStudent(this.newStudent)
